@@ -1,0 +1,69 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v1-1" author="YK">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="verb"/>
+            </not>
+        </preConditions>
+        <createTable tableName="verb">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="infinitiv" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="preteritum" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="partyzip2" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="translate" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="v1-2" author="YK">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="verb"/>
+        </preConditions>
+        <loadData tableName="verb" file="db/data/verbs.csv"/>
+    </changeSet>
+
+    <changeSet id="v1-3" author="YK">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="nomen"/>
+            </not>
+        </preConditions>
+        <createTable tableName="nomen">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="article" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plural" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="translate" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="v1-4" author="YK">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="nomen"/>
+        </preConditions>
+        <loadData tableName="nomen" file="db/data/nomens.csv"/>
+    </changeSet>
+</databaseChangeLog>

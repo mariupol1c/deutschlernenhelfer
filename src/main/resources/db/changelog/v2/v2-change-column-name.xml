@@ -1,0 +1,22 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v2-1" author="YK">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="verb"/>
+        </preConditions>
+        <renameColumn tableName="verb" oldColumnName="infinitiv" newColumnName="infinitive" columnDataType="varchar(50)"/>
+    </changeSet>
+
+    <changeSet id="v2-update-verbs" author="">
+        <preConditions onFail="MARK_RAN">
+           <not>
+               <tableIsEmpty tableName="verb"/>
+           </not>
+        </preConditions>
+        <loadData tableName="verb" file="db/data/verbs1.csv"/>
+    </changeSet>
+
+</databaseChangeLog>

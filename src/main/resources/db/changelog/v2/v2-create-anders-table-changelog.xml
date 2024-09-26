@@ -1,0 +1,36 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v2-1" author="YK">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="anders"/>
+            </not>
+        </preConditions>
+        <createTable tableName="anders">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="wort" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="translate" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="v2-2" author="YK">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="anders"/>
+        </preConditions>
+        <renameTable newTableName="andere"
+                     oldTableName="anders"/>
+    </changeSet>
+</databaseChangeLog>
