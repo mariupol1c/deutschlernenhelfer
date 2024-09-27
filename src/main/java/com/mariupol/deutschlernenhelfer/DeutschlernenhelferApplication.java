@@ -8,7 +8,7 @@ public class DeutschlernenhelferApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DeutschlernenhelferApplication.class, args);
-		//some updates 1
+		//updates 1 + Reset
 	}
 
 }
