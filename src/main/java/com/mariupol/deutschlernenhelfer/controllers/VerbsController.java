@@ -1,7 +1,11 @@
 package com.mariupol.deutschlernenhelfer.controllers;
 
+import com.mariupol.deutschlernenhelfer.DeutschlernenhelferApplication;
+import com.mariupol.deutschlernenhelfer.models.Template;
 import com.mariupol.deutschlernenhelfer.models.Verb;
 import com.mariupol.deutschlernenhelfer.repo.VerbRepository;
+import com.mariupol.deutschlernenhelfer.servises.Connector;
+import com.mariupol.deutschlernenhelfer.servises.ParcingServises;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +21,14 @@ public class VerbsController {
 
     @GetMapping("/verbs/add")
     public String verbAdd(Model model) {
-        model.addAttribute("abName", "Add Verb");
+        Verb verb = new Verb();
+        String suchen = DeutschlernenhelferApplication.getSuchende();
+        if (!suchen.equals("")) {
+            DeutschlernenhelferApplication.setSuchende("");
+            Template temp = ParcingServises.getTemplate(suchen);
+            verb = Connector.getVerbFromTemplate(temp);
+        }
+        model.addAttribute("verb", verb);
         return "verb-add";
     }
 

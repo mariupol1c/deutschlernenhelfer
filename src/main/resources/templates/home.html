@@ -8,11 +8,16 @@
 <body>
 <header th:insert="fragments :: header"></header>
 <main>
-    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal text-body-emphasis">Hauptseite</h1>
-        <p class="fs-5 text-body-secondary">Assistent beim Deutschlernen.</p>
+    <div class="container p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal text-body-emphasis">Neu Wort</h1>
+        <form method="post">
+            <input type="text" name="wort" placeholder="Suchendes Wort/Worte" class="form-control">
+            <br>
+            <button type="submit" class="btn btn-success">Automatisch füllen</button>
+        </form>
+        <br>
+        <h4 style="color:red" th:text="${message}"></h4>
     </div>
-
 </main>
 <footer th:insert="fragments :: footer"></footer>
 </body>

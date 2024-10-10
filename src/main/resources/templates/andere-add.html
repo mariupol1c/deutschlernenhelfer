@@ -11,9 +11,9 @@
     <div class="container p-3 pb-md-4 mx-auto text-center">
         <h1 class="display-4 fw-normal text-body-emphasis">Neu Andere</h1>
         <form method="post">
-            <input type="text" name="wort" placeholder="Add Wort/Worte" class="form-control">
+            <input type="text" name="wort" th:value="${andere.wort}" placeholder="Add Wort/Worte" class="form-control">
             <br>
-            <input type="text" name="translate" placeholder="Add translate" class="form-control">
+            <input type="text" name="translate" th:value="${andere.translate}" placeholder="Add translate" class="form-control">
             <br>
             <button type="submit" class="btn btn-success">Add</button>
         </form>

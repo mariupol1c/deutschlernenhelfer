@@ -1,10 +1,11 @@
 package com.mariupol.deutschlernenhelfer.controllers;
 
+import com.mariupol.deutschlernenhelfer.DeutschlernenhelferApplication;
 import com.mariupol.deutschlernenhelfer.models.Andere;
-import com.mariupol.deutschlernenhelfer.models.AndereType;
-import com.mariupol.deutschlernenhelfer.models.Verb;
+import com.mariupol.deutschlernenhelfer.models.Template;
 import com.mariupol.deutschlernenhelfer.repo.AndereRepository;
-import com.mariupol.deutschlernenhelfer.repo.VerbRepository;
+import com.mariupol.deutschlernenhelfer.servises.Connector;
+import com.mariupol.deutschlernenhelfer.servises.ParcingServises;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,14 @@ public class AndersController {
 
     @GetMapping("/anders/add")
     public String andereAdd(Model model) {
-        model.addAttribute("abName", "Add");
+        Andere andere = new Andere();
+        String suchen = DeutschlernenhelferApplication.getSuchende();
+        if (!suchen.equals("")) {
+            DeutschlernenhelferApplication.setSuchende("");
+            Template temp = ParcingServises.getTemplate(suchen);
+            andere = Connector.getAndere1FromTemplate(temp);
+        }
+        model.addAttribute("andere", andere);
         return "andere-add";
     }
 

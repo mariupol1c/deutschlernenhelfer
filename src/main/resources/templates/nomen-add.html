@@ -11,13 +11,13 @@
     <div class="container p-3 pb-md-4 mx-auto text-center">
         <h1 class="display-4 fw-normal text-body-emphasis">Neu Nomen</h1>
         <form method="post">
-            <input type="text" name="article" placeholder="Add article" class="form-control">
+            <input type="text" name="article" th:value="${nomen.article}" placeholder="Add article" class="form-control">
             <br>
-            <input type="text" name="name" placeholder="Add Nomen" class="form-control">
+            <input type="text" name="name" th:value="${nomen.name}" placeholder="Add name" class="form-control">
             <br>
-            <input type="text" name="plural" placeholder="Add plural" class="form-control">
+            <input type="text" name="plural" th:value="${nomen.plural}" placeholder="Add plural" class="form-control">
             <br>
-            <input type="text" name="translate" placeholder="Add translate" class="form-control">
+            <input type="text" name="translate" th:value="${nomen.translate}" placeholder="Add translate" class="form-control">
             <br>
             <button type="submit" class="btn btn-success">Add</button>
         </form>
