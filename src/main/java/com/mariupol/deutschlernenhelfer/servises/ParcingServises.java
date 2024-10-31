@@ -69,4 +69,9 @@ public class ParcingServises {
             template.setTranslate(getTranslate(suchen));
         return template;
     }
+
+    public static String prepareWord(String str){
+        return str.replace("der", "").replace("die", "").replace("das", "")
+                .trim();
+    }
 }

@@ -21,7 +21,6 @@ import java.util.List;
 public class MainController {
     @Autowired
     private NomenRepository nomenRepository;
-
     @Autowired
     private VerbRepository verbRepository;
     @Autowired
@@ -38,13 +37,14 @@ public class MainController {
     @PostMapping("/")
     public String homePost(@RequestParam(value = "wort") String wort, Model model) {
         String link = "redirect:/";
-        String wortType = ParcingServises.getType(wort);
+        String  wortRady= ParcingServises.prepareWord(wort);
+        String wortType = ParcingServises.getType(wortRady);
         if (wortType == null) {
             message = "Ich kann nich das Wort \"" + wort + "\" finden.";
         }
         else{
             link = getLink(wortType);
-            DeutschlernenhelferApplication.setSuchende(wort);
+            DeutschlernenhelferApplication.setSuchende(wortRady);
         }
         return link;
     }
@@ -68,7 +68,6 @@ public class MainController {
     @GetMapping("/verbs")
     public String verbs(Model model) {
         List<Verb> verbs = (List<Verb>) verbRepository.findAll();
-        //model.addAttribute("abName", "Verbs");
         model.addAttribute("verbs", verbs);
         return "verbs";
     }
@@ -78,6 +77,11 @@ public class MainController {
         List<Andere> anders = (List<Andere>) andereRepository.findAll();
         model.addAttribute("anders", anders);
         return "anders";
+    }
+
+    @GetMapping("/add")
+    public String addFromFile(Model model) {
+        return "add";
     }
 
 }

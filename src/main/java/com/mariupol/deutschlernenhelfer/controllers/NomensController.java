@@ -36,7 +36,7 @@ public class NomensController {
     public String nomenAddPost(@RequestParam String article, @RequestParam String name,
                                @RequestParam String plural, @RequestParam String translate, Model model){
         Nomen nom = new Nomen(article.trim(), name.trim(), plural.trim(), translate.trim());
-        nomenRepository.save(nom);
+        nomenRepository.saveNomen(nom);
         return "redirect:/nomens";
     }
 

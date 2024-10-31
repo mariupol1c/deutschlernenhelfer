@@ -36,7 +36,7 @@ public class AndersController {
     public String andereAddPost(@RequestParam String wort, @RequestParam String translate, Model model) {
         wort = wort.replaceAll("   ", " ").replaceAll("  ", " ");
         Andere andere = new Andere(wort.trim(), getType(wort), translate.trim());
-        andereRepository.save(andere);
+        andereRepository.saveAndere(andere);
         return "redirect:/anders";
     }
 

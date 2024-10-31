@@ -11,8 +11,12 @@ public class Connector {
         String[] strings = template.getWort().split(",");
         nomen.setArticle(strings[1].trim());
         nomen.setName(strings[0].trim());
-        nomen.setPlural(template.getKonjugieren()[1]);
-        nomen.setTranslate(template.getTranslate());
+        try {
+            nomen.setPlural(template.getKonjugieren()[1]);
+            nomen.setTranslate(template.getTranslate());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return nomen;
     }
 

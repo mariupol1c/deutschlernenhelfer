@@ -37,7 +37,7 @@ public class VerbsController {
                               @RequestParam String partyzip2, @RequestParam String translate, Model model) {
         partyzip2 = partyzip2.replaceAll("   ", " ").replaceAll("  ", " ");
         Verb verb = new Verb(infinitive.trim(), preteritum.trim(), partyzip2.trim(), translate.trim());
-        verbRepository.save(verb);
+        verbRepository.saveVerb(verb);
         return "redirect:/verbs";
     }
 
