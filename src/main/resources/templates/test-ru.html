@@ -9,12 +9,26 @@
 <header th:insert="fragments :: header"></header>
 <main>
     <div class="container p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal text-body-emphasis">Übersetzen Sie bitte,</h1>
+        <h1 class="display-4 fw-normal text-body-emphasis">Wälen Sie bitte die richtige Antwort</h1>
         <br>
-        <form action="/test-andere-ru" method="post">
+        <form action="/test-ru" method="post">
             <h4 th:text="${wort}"></h4>
             <br>
-            <input type="text" name="wortA" placeholder="Schreib Antwort" class="form-control">
+            <fieldset>
+                <!--legend th:text="${wort}"></legend-->
+                <div>
+                    <input type="radio" id="t1" name="an" value=t1 />
+                    <label for="t1" th:text="${t1}"></label>
+                </div>
+                <div>
+                    <input type="radio" id="t2" name="an" value=t2 />
+                    <label for="t2" th:text="${t2}"></label>
+                </div>
+                <div>
+                    <input type="radio" id="t3" name="an" value=t3 />
+                    <label for="t3" th:text="${t3}"></label>
+                </div>
+            </fieldset>
             <br>
             <button type="submit" class="btn btn-success">Überprüfen</button>
         </form>

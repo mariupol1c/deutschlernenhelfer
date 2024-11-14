@@ -13,4 +13,6 @@ public class Template {
     private String wort;
     private String[] konjugieren;
     private String translate;
+
+
 }

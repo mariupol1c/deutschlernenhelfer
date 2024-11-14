@@ -36,4 +36,25 @@ public class Connector {
         andere.setTranslate(template.getTranslate());
         return andere;
     }
+
+    public static Template getTemplateFromAndere(Andere andere) {
+        Template temp = new Template();
+        temp.setWort(andere.getWort());
+        temp.setTranslate(andere.getTranslate());
+        return temp;
+    }
+
+    public static Template getTamplateFromNomen(Nomen nomen) {
+        Template temp = new Template();
+        temp.setWort(nomen.getName());
+        temp.setTranslate(nomen.getTranslate());
+        return temp;
+    }
+
+    public static Template getTamplateFromVerb(Verb verb) {
+        Template temp = new Template();
+        temp.setWort(verb.getInfinitive());
+        temp.setTranslate(verb.getTranslate());
+        return temp;
+    }
 }

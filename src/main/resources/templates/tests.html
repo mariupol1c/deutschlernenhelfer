@@ -12,32 +12,53 @@
     <h1 class="display-4 fw-normal text-body-emphasis">Wählen Sie bitte type von Test aus</h1>
     <br>
     <form method="post">
-            <label for="type">Abschnitt: </label>
+        <fieldset>
+            <legend>Art:</legend>
+            <div>
+                <input type="radio" id="schwierig" name="komp" value="Schwierig" checked />
+                <label for="schwierig">Schwierig</label>
+            </div>
+            <div>
+                <input type="radio" id="leicht" name="komp" value="Leicht" />
+                <label for="leicht">Leicht</label>
+            </div>
+            <div>
+                <input type="radio" id="allgemeine" name="komp" value="Allgemeine" />
+                <label for="allgemeine">Allgemeine</label>
+            </div>
+            <div>
+                <input type="radio" id="test" name="komp" value="Test" />
+                <label for="test">TEST</label>
+            </div>
+        </fieldset>
         <br>
-            <select type="text" name="type"  id="type">
-                <option value="nomens">Nomens</option>
-                <option value="verbs">Verbs</option>
-                <option value="andersWort">Wörte</option>
-                <option value="andersSatz">Satz</option>
-                <!--div th:switch="${abschnitt}">
-                    <option th:case="nomens" value="nomens">Nomens</option>
-                    <option  th:case="verbs" value="verbs">Verbs</option>
-                    <div th:case="anders">
-                        <option value="andersWort">Wörte</option>
-                        <option value="andersSatz">Satz</option>
-                    </div>
-                </div-->
+        <label for="type">Abschnitt: </label>
+        <br>
+        <select type="text" name="sprache"  id="sprache">
+            <option value="ru">Rusisch -> Deutsch</option>
+            <!--option value="de">Deutsch -> Rusisch</option-->
             </select>
         <br>
         <br>
-            <label for="type">Sprache: </label>
+        <label for="type">Sprache: </label>
         <br>
-            <select type="text" name="sprache"  id="sprache">
-                <option value="ru">Rusisch -> Deutsch</option>
-                <!--option value="de">Deutsch -> Rusisch</option-->
-            </select>
-        <br><br>
-            <button type="submit" class="btn btn-success">Start</button>
+        <select type="text" name="type"  id="type">
+            <option value="nomens">Nomens</option>
+            <option value="verbs">Verbs</option>
+            <option value="andersWort">Wörte</option>
+            <option value="andersSatz">Satz</option>
+            <!--div th:switch="${abschnitt}">
+                <option th:case="nomens" value="nomens">Nomens</option>
+                <option  th:case="verbs" value="verbs">Verbs</option>
+                <div th:case="anders">
+                    <option value="andersWort">Wörte</option>
+                    <option value="andersSatz">Satz</option>
+                </div>
+            </div-->
+        </select>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-success">Start</button>
     </form>
 </div>
 

@@ -9,6 +9,9 @@ import com.mariupol.deutschlernenhelfer.repo.NomenRepository;
 import com.mariupol.deutschlernenhelfer.repo.VerbRepository;
 import com.mariupol.deutschlernenhelfer.servises.ParcingServises;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +19,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Locale;
 
 @Controller
+@ConfigurationProperties(prefix = "deutsch")
 public class MainController {
+
+//    Work with properties files and some languages
+    @Value("${pr}")
+    private String pr;
+//    System.out.println(pr);
+
+    @Autowired
+    private MessageSource messageSource;
+    @Autowired
+    private Locale locale;
+//    System.out.println(messageSource.getMessage("prDE", null, locale));
+//  End properties
+
     @Autowired
     private NomenRepository nomenRepository;
     @Autowired
@@ -27,9 +45,9 @@ public class MainController {
     private AndereRepository andereRepository;
     private String message = "";
 
-
     @GetMapping("/")
     public String home(Model model) {
+        message = "";
         model.addAttribute("message", message);
         return "home";
     }
